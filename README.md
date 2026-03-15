@@ -8,3 +8,5 @@ http://localhost:8081/actuator
 http://localhost:8081/actuator/health
 
 http://localhost:8081/swagger-ui/index.html
+
+./mvnw spotless:apply
