@@ -1,21 +1,20 @@
 package com.renu.bookstore.catalog.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.math.BigDecimal;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
-
-import java.math.BigDecimal;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest(
         properties = {
             "spring.test.database.replace=none",
             "spring.datasource.url=jdbc:tc:postgresql:16-alpine:///db",
         })
-//@Import(ContainersConfig.class)
+// @Import(ContainersConfig.class)
 @Sql("/test-data.sql")
 class ProductRepositoryTest {
 
@@ -29,16 +28,17 @@ class ProductRepositoryTest {
     }
 
     @Test
-    void shouldGetProductByCode(){
+    void shouldGetProductByCode() {
         ProductEntity productEntity = productRepository.findByCode("P100").orElseThrow();
         assertThat(productEntity.getCode()).isEqualTo("P100");
         assertThat(productEntity.getName()).isEqualTo("The Hunger Games");
-        assertThat(productEntity.getDescription()).isEqualTo("Winning will make you famous. Losing means certain death...");
+        assertThat(productEntity.getDescription())
+                .isEqualTo("Winning will make you famous. Losing means certain death...");
         assertThat(productEntity.getPrice()).isEqualTo(new BigDecimal("34.0"));
     }
 
     @Test
-    void shouldReturnEmptyWhenProductNotExists(){
+    void shouldReturnEmptyWhenProductNotExists() {
         assertThat(productRepository.findByCode("P999")).isEmpty();
     }
 }
