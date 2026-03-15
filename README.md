@@ -23,3 +23,5 @@ adminadminadmin
 https://taskfile.dev/docs/installation
 
 https://docs.portainer.io/start/install-ce/server/docker
+
+http://localhost:8081/api/products?page=1
