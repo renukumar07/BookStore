@@ -17,8 +17,9 @@ class ProductController {
     ProductController(ProductService productService) {
         this.productService = productService;
     }
+
     @GetMapping
-    PagedResult<Product> getProducts(@RequestParam(name = "page", defaultValue = "1") int pageNo){
+    PagedResult<Product> getProducts(@RequestParam(name = "page", defaultValue = "1") int pageNo) {
         return productService.getProducts(pageNo);
     }
 }
