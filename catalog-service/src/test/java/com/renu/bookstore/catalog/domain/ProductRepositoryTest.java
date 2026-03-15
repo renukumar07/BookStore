@@ -14,6 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
             "spring.test.database.replace=none",
             "spring.datasource.url=jdbc:tc:postgresql:16-alpine:///db",
         })
+//@Import(ContainersConfig.class)
 @Sql("/test-data.sql")
 class ProductRepositoryTest {
 
